@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { AccountPanel } from "@/components/AccountPanel";
@@ -25,6 +25,10 @@ export async function generateMetadata({ params }: AccountPageProps): Promise<Me
   return {
     title: "Account",
     description: "Optional account for DevConverTools users.",
+    robots: {
+      index: false,
+      follow: false
+    },
     alternates: {
       canonical: `/${lang}/account`,
       languages: Object.fromEntries(locales.map((currentLang) => [currentLang, `/${currentLang}/account`]))

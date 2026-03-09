@@ -2,6 +2,7 @@
 
 import { getToolPath } from "@/config/tools";
 import type { ToolId } from "@/config/tools";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { languageFlags, languageNames, type Locale, locales } from "@/i18n/config";
 import { getMessages } from "@/i18n/messages";
 
@@ -24,6 +25,18 @@ const contactLabelByLocale: Record<Locale, string> = {
   ru: "\u041a\u043e\u043d\u0442\u0430\u043a\u0442",
   ar: "\u062a\u0648\u0627\u0635\u0644",
   hi: "\u0938\u0902\u092a\u0930\u094d\u0915"
+};
+
+const homeLabelByLocale: Record<Locale, string> = {
+  en: "Home",
+  fr: "Accueil",
+  es: "Inicio",
+  de: "Start",
+  pt: "Inicio",
+  zh: "\u9996\u9875",
+  ru: "\u0413\u043b\u0430\u0432\u043d\u0430\u044f",
+  ar: "\u0627\u0644\u0631\u0626\u064a\u0633\u064a\u0629",
+  hi: "\u0939\u094b\u092e"
 };
 
 function toFlagEmoji(countryCode: string): string {
@@ -72,10 +85,13 @@ export function AppHeader({ locale, toolId, section = "home", blogSlug }: AppHea
 
       <div className="header-right">
         <div className="header-links">
+          <Link href={`/${locale}`}>{homeLabelByLocale[locale]}</Link>
           <Link href={`/${locale}/blogs`}>{messages.blog}</Link>
           <Link href={`/${locale}/account`}>{messages.account}</Link>
           <Link href={`/${locale}/contact`}>{contactLabelByLocale[locale]}</Link>
         </div>
+
+        <ThemeToggle locale={locale} modeLabel={messages.mode} />
 
         <details className="language-menu">
           <summary>

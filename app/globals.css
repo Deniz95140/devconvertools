@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   color-scheme: dark;
   --bg: #10151c;
   --bg-elevated: #171f29;
@@ -10,6 +10,28 @@
   --primary-hover: #43b593;
   --danger: #ff7d7d;
   --shadow: 0 8px 30px rgba(4, 8, 14, 0.35);
+  --menu-bg: #111922;
+  --editor-bg: #0f141b;
+  --link-accent: #9ed9ff;
+  --soft-text: #c8d5e5;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --bg: #e9eef5;
+  --bg-elevated: #f5f8fc;
+  --bg-muted: #e9eef5;
+  --border: #c5d0de;
+  --text: #17212b;
+  --text-muted: #5f6f82;
+  --primary: #3ba78a;
+  --primary-hover: #2f957a;
+  --danger: #d45555;
+  --shadow: 0 8px 24px rgba(29, 49, 71, 0.12);
+  --menu-bg: #f8fbff;
+  --editor-bg: #f3f7fc;
+  --link-accent: #2367a4;
+  --soft-text: #32465d;
 }
 
 * {
@@ -225,7 +247,7 @@ textarea {
   border-radius: 12px;
   border: 1px solid var(--border);
   color: var(--text);
-  background: #0f141b;
+  background: var(--editor-bg);
   padding: 13px;
   line-height: 1.45;
   font-family: "IBM Plex Mono", "Cascadia Code", Consolas, monospace;
@@ -342,6 +364,20 @@ select:focus,
   color: var(--text);
 }
 
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 7px 11px;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: #496079;
+}
+
 .tool-search-wrap {
   margin-bottom: 14px;
   display: flex;
@@ -396,7 +432,7 @@ input:focus {
 .tool-seo-section p {
   margin: 0 0 16px;
   line-height: 1.65;
-  color: #c8d5e5;
+  color: var(--soft-text);
 }
 
 .related-tools-grid {
@@ -531,7 +567,7 @@ input:focus {
 
 .blog-article p {
   margin: 0 0 16px;
-  color: #ccd9e7;
+  color: var(--soft-text);
   line-height: 1.7;
 }
 
@@ -585,7 +621,7 @@ input:focus {
   padding: 8px;
   border-radius: 12px;
   border: 1px solid var(--border);
-  background: #111922;
+  background: var(--menu-bg);
   box-shadow: var(--shadow);
 }
 
@@ -663,13 +699,13 @@ input:focus {
 }
 
 .home-blog-item a {
-  color: #9ed9ff;
+  color: var(--link-accent);
 }
 
 .see-more-link {
   margin-top: 12px;
   display: inline-block;
-  color: #9ed9ff;
+  color: var(--link-accent);
   font-weight: 600;
 }
 
@@ -689,6 +725,7 @@ input:focus {
     align-items: flex-start;
   }
 }
+
 
 
 

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { AppHeader } from "@/components/AppHeader";
@@ -45,6 +45,10 @@ export async function generateMetadata({ params }: ToolPageProps): Promise<Metad
   return {
     title,
     description,
+    robots: {
+      index: true,
+      follow: true
+    },
     openGraph: {
       title,
       description,

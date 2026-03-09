@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { AppHeader } from "@/components/AppHeader";
@@ -32,6 +32,16 @@ export async function generateMetadata({ params }: LangPageProps): Promise<Metad
   return {
     title: messages.appName,
     description: messages.seoDescription,
+    robots: {
+      index: true,
+      follow: true
+    },
+    openGraph: {
+      title: `${messages.appName} | DevConverTools`,
+      description: messages.seoDescription,
+      type: "website",
+      url: `https://devconvertools.com/${locale}`
+    },
     alternates: {
       canonical: `/${locale}`,
       languages: Object.fromEntries(locales.map((currentLang) => [currentLang, `/${currentLang}`]))
