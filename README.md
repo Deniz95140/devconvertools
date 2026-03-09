@@ -1,135 +1,61 @@
-# DevConverTools MVP
+﻿# DevConverTools
 
-Micro-SaaS de conversion technique pour developpeurs, optimise pour la vitesse, le SEO et la simplicite.
+DevConverTools is a fast, minimal toolbox for developers to convert technical data formats instantly.
 
-## Stack recommandee
+## What It Does
 
-- Next.js (App Router) + TypeScript
-- React Server Components + Client components ciblÃ©s
-- CSS natif (sans framework) pour un rendu minimaliste et rapide
-- Conversions cote client pour une latence quasi instantanee
-- Deploiement Vercel (build statique hybride)
+- Instant format conversion in the browser
+- File drag & drop support
+- Copy and download output
+- Multilingual interface
+- Optional account system (Supabase)
 
-## Fonctionnalites MVP
+## Included Tools
 
-- JSON -> YAML
-- YAML -> JSON
-- JSON -> CSV
-- CSV -> JSON
-- JSON -> TypeScript types
-- JSON -> Python classes
-- XML -> JSON
-- Base64 encode / decode
+- JSON ↔ YAML
+- JSON ↔ CSV
+- XML → JSON
+- JSON → TypeScript types
+- JSON → Python classes
+- Base64 encode/decode
 - JWT decoder
 - Timestamp converter
+- JSON formatter / validator / minifier
+- URL & HTML encode/decode
+- SHA256 / MD5 generator
+- Regex tester
+- UUID generator
+- Password generator
 
-## i18n et SEO
+## Tech Stack
 
-Langues supportees:
+- Next.js + TypeScript
+- Supabase Auth (optional account)
+- Optimized for Vercel deployment
 
-- `en` (defaut)
-- `fr`
-- `es`
-- `de`
-- `pt`
-- `zh`
-- `ru`
-- `ar`
-- `hi`
-
-Exemples d'URLs:
-
-- `/en/json-to-yaml`
-- `/fr/json-vers-yaml`
-- `/es/json-a-yaml`
-
-Le sitemap est genere automatiquement (`/sitemap.xml`).
-
-## Structure
-
-```text
-app/
-  [lang]/
-    [tool]/page.tsx      # page outil localisee
-    layout.tsx           # validation locale
-    page.tsx             # home locale
-  layout.tsx             # layout racine
-  page.tsx               # redirection vers /en
-  robots.ts
-  sitemap.ts
-  globals.css
-
-src/
-  components/
-    AppHeader.tsx
-    ConverterWorkbench.tsx
-    FileDropZone.tsx
-    ToolGrid.tsx
-  config/
-    tools.ts             # configuration centrale des outils
-  i18n/
-    config.ts
-    messages.ts
-  lib/
-    converters/
-      index.ts
-      generatePython.ts
-      generateTypescript.ts
-    utils.ts
-```
-
-## Ajouter un nouvel outil
-
-1. Ajouter la definition dans `src/config/tools.ts`:
-   - `id`
-   - `slugs` par langue
-   - `name` / `description`
-   - extensions input/output
-   - options eventuelles
-2. Ajouter la logique dans `src/lib/converters/index.ts` (switch sur `toolId`).
-3. Aucun ajout de route n'est necessaire: les pages sont generees automatiquement via la config centrale.
-
-## Lancer localement
+## Local Setup
 
 ```bash
 npm install
 npm run dev
 ```
 
-Build production:
+Open: `http://localhost:3000`
 
-```bash
-npm run build
-npm run start
-```
+## Environment Variables
 
-## Notes produit
-
-- L'UX est orientee rapidite: conversion instantanee, drag & drop, copier, telecharger.
-- Gestion d'erreur simple et lisible.
-- Architecture preparee pour 50+ outils via une config unique.
-
-## Configuration Supabase (Account)
-
-Le module account a besoin des variables suivantes:
-
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-
-Etapes rapides:
-
-1. Creer un projet sur Supabase.
-2. Ouvrir `Project Settings > API`.
-3. Copier `Project URL` dans `NEXT_PUBLIC_SUPABASE_URL`.
-4. Copier `anon public key` dans `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
-5. Copier `.env.example` vers `.env.local` et coller les vraies valeurs.
-6. Redemarrer le serveur Next.js (`npm run dev`).
-
-Exemple `.env.local`:
+Create `.env.local`:
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN=YOUR_CLOUDFLARE_TOKEN
 ```
 
-Pour Vercel, ajouter les memes variables dans `Project Settings > Environment Variables`.
+## Production
+
+Deploy on Vercel and add the same environment variables in project settings.
+
+---
+
+Contact: `devconvertools@gmail.com`
